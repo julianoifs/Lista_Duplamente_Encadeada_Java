@@ -25,6 +25,13 @@ public class Lista_Duplamente_Encadeada<T> {
         this.tamanho++;
     }
 
+    public boolean eVazio() {
+        if (this.tamanho == 0) {
+            return false;            
+        }
+        return true;
+    }
+
     public T mostrarLista() {
         if (this.tamanho == 0) {
             return (T) ("[ ]");
