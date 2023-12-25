@@ -12,6 +12,7 @@ public class Lista_Duplamente_Encadeada<T> {
         this.tamanho = 0;
     }
 
+    // Adiciona no início da lista
     public void addInicio(T elemento) {
         NoDuplo<T> no = new NoDuplo<T>(elemento);
 
@@ -25,6 +26,22 @@ public class Lista_Duplamente_Encadeada<T> {
         this.tamanho++;
     }
 
+    // Adiciona no final da lista
+    public void addFinal(T elemento) {
+        NoDuplo<T> dNo =  new NoDuplo<T>(elemento);
+        NoDuplo<T> end = this.fim;
+
+        if (this.tamanho == 0) {
+            this.inicio = dNo;
+        } else {
+            this.fim.setProximo(dNo);
+            dNo.setAnterior(end);
+        }
+        this.fim = dNo;
+        this.tamanho++;
+    }
+
+    // Verificar se a lista possui elemento
     public boolean eVazio() {
         if (this.tamanho == 0) {
             return false;            
@@ -32,6 +49,12 @@ public class Lista_Duplamente_Encadeada<T> {
         return true;
     }
 
+    // retorna o tamanho da lista
+    public int getTamanho() {
+        return this.tamanho;
+    }
+
+    // Exibir elementos da lista, se a lista possuir elementos
     public T mostrarLista() {
         if (this.tamanho == 0) {
             return (T) ("[ ]");
