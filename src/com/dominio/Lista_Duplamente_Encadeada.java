@@ -28,7 +28,7 @@ public class Lista_Duplamente_Encadeada<T> {
 
     // Adiciona no final da lista
     public void addFinal(T elemento) {
-        NoDuplo<T> dNo =  new NoDuplo<T>(elemento);
+        NoDuplo<T> dNo = new NoDuplo<T>(elemento);
         NoDuplo<T> end = this.fim;
 
         if (this.tamanho == 0) {
@@ -41,10 +41,43 @@ public class Lista_Duplamente_Encadeada<T> {
         this.tamanho++;
     }
 
+    // remove do início da lista
+    public void removerinicio() throws Exception {
+        NoDuplo<T> atual = this.inicio;
+
+        if (this.tamanho == 0) {
+            throw new Exception("[ ]");
+        } else if (this.tamanho == 1) {
+            this.inicio = null;
+            this.fim = null;
+        } else {
+            this.inicio = this.inicio.getProximo();
+            this.inicio.setAnterior(null);
+            atual = null;
+        }
+        this.tamanho--;
+    }
+
+    // remove do final da lista
+    public void removerFinal() throws Exception {
+        NoDuplo<T> end = this.fim;
+
+        if (this.tamanho == 0) {
+            throw new Exception("[ ]");
+            } else if (this.tamanho == 1) {
+                this.inicio = null;
+                this.fim = null;
+            } else {
+                this.fim = this.fim.getAnterior();
+                end = null;
+            }
+            this.tamanho--;
+    }
+
     // Verificar se a lista possui elemento
     public boolean eVazio() {
         if (this.tamanho == 0) {
-            return false;            
+            return false;
         }
         return true;
     }
@@ -64,7 +97,7 @@ public class Lista_Duplamente_Encadeada<T> {
 
         for (int i = 0; i < this.tamanho - 1; i++) {
             sb.append(atual.getInfo()).append(", ");
-            atual = atual.getProximo();            
+            atual = atual.getProximo();
         }
         sb.append(atual.getInfo()).append("]");
 
